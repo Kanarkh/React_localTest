@@ -1,45 +1,55 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import axios from 'axios';
+import Movie from "./Movie";
+import "./App.css"
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        console.log("hello");
-    }
     state = {
-        count: 0
-    };
-    add = () => {
-        console.log("add");
-        //setState를 실행할때마다 새로운 count값을 가지고 render를 실행시킨다
-        //
-        this.setState(current => ({count: current.count + 1}));
-    };
-    minus = () => {
-        console.log("minus");
-        // this.state.count -= 1;
-        this.setState(test => ({count: test.count - 1}));
-    };
-
-    render() {
-        console.log("componet rendering")
-        return (
-            <div>
-                <h1>The number is {this.state.count}</h1>
-                <button onClick={this.add}>Add</button>
-                <button onClick={this.minus}>Minus</button>
-            </div>
-        )
+        isLoading: true,
+        movies: []
     }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("updated")
-    }
+    getMovies = async () => {
+        const {
+            data: {
+                data: {movies}
+            }
+        } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
+        this.setState({movies, isLoading: false});
+        // this.setState(load => ({isLoading: false}));
+    };
 
     componentDidMount() {
-        console.log("component did mount")
+        this.getMovies();
     }
-    componentWillUnmount() {
-        console.log("Goodbye, world");
+
+    render() {
+        // const {isLoading} = this.state;
+        const {isLoading, movies} = this.state;
+        return (
+            <section className="container">
+                {isLoading ?
+                    (
+                        <div className="loader">
+                            <span className="loader__text">Loading...</span>
+                        </div>
+                    )
+                    : (
+                        <div className="movies">
+                            {movies.map(movie => (
+                                <Movie
+                                    key={movie.id}
+                                    id={movie.id}
+                                    year={movie.year}
+                                    title={movie.title}
+                                    summary={movie.summary}
+                                    poster={movie.medium_cover_image}
+                                    genres={movie.genres}
+                                />
+                            ))}
+                        </div>
+                    )}
+            </section>
+        )
     }
 }
 
