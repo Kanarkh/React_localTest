@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="34.64.68.243" id="cb99970c-936f-4fd3-b8ce-514a0c6b7351" keyPath="C:\key\dreamHigh.ppk" port="22" nameFormat="DESCRIPTIVE" username="dreamHigh" />
+    </configs>
+  </component>
+</project>

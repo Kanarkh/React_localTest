@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9cf4ff24-d2c9-416a-bca6-aa2eefb95e71" name="gcpBlockChainServer99" url="http://34.64.68.243">
+        <fileTransfer rootFolder="/home" accessType="SFTP" host="34.64.68.243" port="22" sshConfigId="cb99970c-936f-4fd3-b8ce-514a0c6b7351" sshConfig="dreamHigh@34.64.68.243:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
