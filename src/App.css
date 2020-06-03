@@ -26,6 +26,7 @@ body,
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 300;
 }
 
 .movies {
@@ -33,5 +34,7 @@ body,
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-
+    padding: 50px;
+    padding-top: 70px;
+    width: 80%;
 }
